@@ -21,24 +21,8 @@
 #   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ########################################################################################################################
 
-unix {
-    BUILD_PAYLOAD = /opt/inesonic/build_payload
-}
-
-win32 {
-    BUILD_PAYLOAD = build_payload.exe
-}
-
-include("$${SOURCE_ROOT}/third_party/llvm_tools.pri")
-
-unix {
-    PYTHON_EXECUTABLE = python3
-    CLANGPP_EXECUTABLE = $${LLVM_INSTALL}/bin/clang++
-}
-
-win32 {
-    PYTHON_EXECUTABLE = python.exe
-    CLANGPP_EXECUTABLE = $${LLVM_INSTALL}/bin/clang++.exe
+defined(SETTINGS_PRI, var) {
+    include($${SETTINGS_PRI})
 }
 
 build_declaration_payload.CONFIG = no_link combine
